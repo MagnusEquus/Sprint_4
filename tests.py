@@ -38,8 +38,11 @@ class TestBooksCollector:
         collection_2books.set_book_genre('Вредные советы', 'Комедии')
         assert len(collection_2books.get_books_for_children()) == 2
 
-    def test_add_and_delete_book_from_favorites(self, collection_2books):
+    def test_add_book_to_favorites(self, collection_2books):
         collection_2books.add_book_in_favorites('King in yellow')
         assert 'King in yellow' in collection_2books.get_list_of_favorites_books()
+
+    def test_remove_book_from_favorites(self, collection_2books):
+        collection_2books.add_book_in_favorites('King in yellow')
         collection_2books.delete_book_from_favorites('King in yellow')
         assert not 'King in yellow' in collection_2books.get_list_of_favorites_books()
